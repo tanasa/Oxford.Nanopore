@@ -66,3 +66,35 @@ nextflow run epi2me-labs/wf-human-variation \
   -profile standard \
   -c custom.config \
   -resume
+
+export NXF_VER=25.04.8
+
+nextflow run epi2me-labs/wf-somatic-variation \
+    --sample_name "MYSAMPLE" \
+    --ref wf-somatic-variation-demo/GCA_000001405.15_GRCh38_no_alt_analysis_set_chr20.fna \
+    --bed wf-somatic-variation-demo/demo.bed \
+    --bam_normal wf-somatic-variation-demo/demo_normal.bam \
+    --bam_tumor wf-somatic-variation-demo/demo_tumor.bam \
+    --snv \
+    --sv \
+    --mod \
+    --annotation true \
+    --igv true \
+    --depth_intervals true \
+    --phase_normal true \
+    --diff_mod true \
+    --override_basecaller_cfg "dna_r10.4.1_e8.2_400bps_sup@v3.5.2" \
+    --tumor_min_coverage 20 \
+    --normal_min_coverage 20 \
+    --min_sv_length 20 \
+    --force_strand true \
+    --ubam_map_threads 4 \
+    --ubam_sort_threads 4 \
+    --modkit_threads 4 \
+    --out_dir nano_somatic_variation \
+    -profile standard \
+    -resume
+
+    export NXF_VER=25.04.8
+
+    
