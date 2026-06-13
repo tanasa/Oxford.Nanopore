@@ -97,4 +97,12 @@ nextflow run epi2me-labs/wf-somatic-variation \
 
     export NXF_VER=25.04.8
 
-    
+    nextflow run epi2me-labs/wf-teloseq \
+    --bam 'wf-teloseq-demo/data' \
+	--reference 'wf-teloseq-demo/HG002qpMP_reference.fasta.gz' \
+	--alignment_threads 4 \
+	--out_dir nano_teloseq \
+	--min_length  100 \
+	--read_quality  10 \
+	-profile standard \
+	-resume 
