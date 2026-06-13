@@ -33,9 +33,36 @@ nextflow run epi2me-labs/wf-single-cell \
 
   
 # custom.config
-  process {
-  resourceLimits = [
-    cpus: 16,
-    memory: '32.GB'
-  ]
-}
+#  process {
+#  resourceLimits = [
+#    cpus: 16,
+#    memory: '32.GB'
+#  ]
+# }
+
+export NXF_VER=25.04.8
+
+nextflow run epi2me-labs/wf-human-variation \
+  --bam wf-human-variation-demo/demo.bam \
+  --ref wf-human-variation-demo/demo.fasta \
+  --bed wf-human-variation-demo/demo.bed \
+  --sample_name DEMO \
+  --snp \
+  --sv \
+  --str \
+  --mod \
+  --phased \
+  --annotation true \
+  --igv true \
+  --out_dir nano_human_variation \
+  --use_qdnaseq true \
+  --qdnaseq_bin_size 100 \
+  --force_strand true \
+  --depth_intervals true \
+  --threads 10 \
+  --ubam_map_threads 10 \
+  --ubam_sort_threads 10 \
+  --modkit_threads 10 \
+  -profile standard \
+  -c custom.config \
+  -resume
